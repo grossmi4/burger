@@ -20,9 +20,9 @@ app.set("view engine", "handlebars");
 
 // set routing
 
-const routes = require("./controllers/burgerController");
+const router = require("./controllers/burgerController");
 
-app.use(routes);
+app.use(router);
 
 // set up listener for primary port
 app.listen(PORT, function() {
