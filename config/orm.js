@@ -3,9 +3,9 @@ const connection = require("./connection.js");
 
 const orm = {
   // function to create a burger from burger name, takes callback
-  newBurger: function(burgerName, cb) {
+  insertOne: function(table, field, value, cb) {
     const queryString =
-        `INSERT INTO burgers (burger_name) VALUES (${burgerName})`;
+        `INSERT INTO ${table} (${field}) VALUES (${value})`;
     connection.query(queryString, function(err, results) {
       if (err) throw err;
       cb(results)
@@ -13,11 +13,11 @@ const orm = {
   },
 
   // function to update burger to devoured, takes callback
-  eatBurger: function(burgerId, cb) {
+  updateOne: function(table, field, value, where, cb) {
     const queryString =
-        `UPDATE burgers
-        SET (isDevoured = TRUE)
-        WHERE id = ${burgerId}`;
+        `UPDATE ${table}
+        SET (${field} = ${value})
+        WHERE id = ${where}`;
     connection.query(queryString, function(err, results) {
       if (err) throw err;
       cb(results)
@@ -25,8 +25,8 @@ const orm = {
   },
 
   // function to return all burgers, takes callback
-  listBurger: function(cb) {
-    const queryString = `SELECT * FROM burgers`;
+  selectAll: function(table, cb) {
+    const queryString = `SELECT * FROM ${table}`;
     connection.query(queryString, function(err, results) {
       if (err) throw err;
       cb(results)
