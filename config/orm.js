@@ -5,7 +5,8 @@ const orm = {
   // function to create a burger from burger name, takes callback
   insertOne: function(table, field, value, cb) {
     const queryString =
-        `INSERT INTO ${table} (${field}) VALUES (${value})`;
+        `INSERT INTO ${table} (${field}) VALUES ('${value}')`;
+    console.log(queryString);
     connection.query(queryString, function(err, results) {
       if (err) throw err;
       cb(results)
@@ -16,8 +17,9 @@ const orm = {
   updateOne: function(table, field, value, where, cb) {
     const queryString =
         `UPDATE ${table}
-        SET (${field} = ${value})
+        SET ${field} = '${value}'
         WHERE id = ${where}`;
+    console.log(queryString);
     connection.query(queryString, function(err, results) {
       if (err) throw err;
       cb(results)

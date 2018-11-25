@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
 
 // Route for creating a new burger
 router.post("/api/burger", function(req, res) {
-  burger.create(req.body.name, function(results) {
+  burger.create(req.body.name, function(result) {
     res.json({ id: result.insertId });
   });
 });

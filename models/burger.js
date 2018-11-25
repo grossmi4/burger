@@ -17,7 +17,7 @@ const burger = {
   },
   // last method of redundant model/orm for #VCM
   update: function(burgerId, cb) {
-    orm.updateOne('burgers','devoured','true', burgerId, function(res) {
+    orm.updateOne('burgers','devoured',1, burgerId, function(res) {
       cb(res)
     });
   },
