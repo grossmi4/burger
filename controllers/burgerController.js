@@ -10,7 +10,11 @@ const burger = require("../models/burger");
 // Route on page load - shows all burgers
 router.get("/", function(req, res) {
   burger.list(function(data) {
-    //TODO build handlebars rendering
+    const hbsObject = {
+      burgers: data
+    };
+    console.log(hbsObject);
+    res.render("index", hbsObject)
   });
 });
 
